@@ -1,0 +1,79 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+
+.rating {
+  margin-bottom: 70px;
+  .rating__h2 {
+    margin-bottom: 26px;
+  }
+  .rating__list {
+    @include listReset();
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .rating {
+    .container {
+      .rating__list {
+        grid-template-columns: repeat(3, 1fr);
+        .catalog-card:nth-child(7),
+        .catalog-card:nth-child(8) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .rating {
+    .container {
+      .rating__list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .rating {
+    .container {
+      .rating__list {
+        gap: 16px;
+        .catalog-card {
+          min-height: 278px;
+          .catalog-card-rating {
+            font-size: 12px;
+            line-height: 15.6px;
+            top: 5%;
+            left: 27%;
+          }
+          .catalog-card-img {
+            max-width: 108px;
+            margin-bottom: 5px;
+          }
+          .catalog-card-content {
+            padding: 16px;
+            .catalog-card-h3 {
+              font-size: 16px;
+              line-height: 19.8px;
+              margin-bottom: 16px;
+            }
+            .catalog-card-price {
+              font-size: 16px;
+              line-height: 20.8px;
+              margin-bottom: 12px;
+            }
+            .catalog-card-btn {
+              padding: 12px 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

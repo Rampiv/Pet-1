@@ -1,0 +1,131 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+
+.connection {
+  background: url("../img/connection-bg.webp") no-repeat;
+  background-position: 75.5% 50%;
+  margin-bottom: 70px;
+  .connection__container {
+    max-width: 49%;
+    .connection__h2 {
+      margin-bottom: 9px;
+    }
+    .connection__description {
+      @include textReset();
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 19.07px;
+      color: $color5;
+    }
+    .connection__form {
+      @include flexible();
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+      margin-bottom: 8px;
+      .connection__input {
+        max-width: 100%;
+        width: 100%;
+        padding: 17px 19px;
+        outline: none;
+        transition: all 0.3s ease-in-out;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+        @media (hover: hover) {
+          &:hover {
+            background-color: $color3;
+          }
+        }
+        &:focus {
+          outline: 1px solid $secondaryColor;
+          background-color: $secondaryColorLight2;
+        }
+      }
+      .connection__btn {
+        padding: 21px 37px;
+      }
+    }
+    .connection__checkbox-container {
+      position: relative;
+      .connection__checkbox-text {
+        font-size: 14px;
+        line-height: 19.07px;
+        .connection__checkbox-link {
+          color: $secondaryColor;
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .connection {
+    background-position: 93.5% 50%;
+    background-size: 51%;
+    .connection__container {
+      .connection__description {
+        max-width: 87%;
+      }
+      .connection__form {
+        margin-bottom: 11px;
+        .connection__input {
+          width: 87%;
+        }
+        .connection__btn {
+          padding: 19px 37px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .connection {
+    background: url("../img/connection-bg-768.webp") no-repeat;
+    background-size: 25%;
+    background-position: 88% 50%;
+    .connection__container {
+      max-width: 100%;
+      .connection__h2 {
+        margin-bottom: 7px;
+      }
+      .connection__description {
+        max-width: 65%;
+      }
+      .connection__form {
+        max-width: 65%;
+        .connection__input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .connection {
+    background: none;
+    margin-bottom: 66px;
+    .connection__container {
+      .connection__description {
+        max-width: 100%;
+      }
+      .connection__form {
+        max-width: 100%;
+        gap: 31px;
+        .connection__input {
+          width: 100%;
+        }
+      }
+      .connection__checkbox-container {
+        .connection__checkbox-text {
+          font-size: 12px;
+          line-height: 16.34px;
+        }
+      }
+    }
+  }
+}

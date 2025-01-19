@@ -1,0 +1,430 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+
+.header {
+  position: relative;
+  margin-bottom: 32px;
+  .container {
+    .header__container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      justify-content: space-between;
+      align-items: center;
+      .header__phone {
+        grid-column: 1/3;
+        @include flexible();
+        justify-content: flex-start;
+        color: $primaryColor;
+        font-size: 14px;
+        line-height: 14px;
+        outline: none;
+        transition: all 0.3s ease-in-out;
+        text-wrap: wrap;
+        width: fit-content;
+        .header__phone-svg {
+          fill: $primaryColor;
+          transition: inherit;
+        }
+        @media (hover: hover){
+          &:hover {
+            color: $primaryColorLight;
+            .header__phone-svg {
+              fill: $primaryColorLight;
+            }
+          }
+        }
+        &:focus {
+          background-color: $color8;
+        }
+        &:active {
+          background-color: inherit;
+          color: $primaryColorDark;
+          .header__phone-svg {
+            fill: $primaryColorDark;
+          }
+        }
+      }
+      .header__nav-secondary {
+        grid-column: 6/13;
+        padding: 18px 0;
+        .header__list-secondary {
+          @include listReset();
+          @include flexible();
+          justify-content: space-between;
+          flex-wrap: wrap;
+          .header__item-secondary {
+            color: $color1;
+            font-size: 14px;
+            line-height: 14px;
+            .header__link-secondary {
+              padding: 0 8px;
+              outline: none;
+              transition: all 0.3s ease-in-out;
+              @media (hover: hover) {
+                &:hover {
+                  color: $secondaryColor;
+                }
+              }
+              &:focus {
+                color: $secondaryColorDark;
+                background-color: $secondaryColor;
+              }
+              &:active {
+                color: $secondaryColorDark;
+                background-color: inherit;
+              }
+            }
+          }
+        }
+      }
+      .logo {
+        grid-column: 1/3;
+        width: 187px;
+        height: 27px;
+      }
+      .header__nav-primary {
+        grid-column: 4/13;
+        padding: 34px 0;
+        .header__list-primary {
+          @include listReset();
+          @include flexible();
+          justify-content: space-between;
+          flex-wrap: wrap;
+          .header__item-primary {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 21.79px;
+            .header__link-primary {
+              padding: 0 7px;
+              transition: all 0.3s ease-in-out;
+              outline: none;
+              @media (hover: hover) {
+                &:hover {
+                  color: $secondaryColor;
+                }
+              }
+              &:focus {
+                color: $color4;
+                background: $secondaryColor;
+              }
+              &:active {
+                color: $secondaryColorDark;
+                background: inherit;
+              }
+            }
+          }
+        }
+      }
+      .header-form {
+        grid-column: 1/11;
+        position: relative;
+        .header-form__input {
+          background-color: $color2;
+          width: 100%;
+          padding: 21px 32px 21px 51px;
+          outline: none;
+          transition: all 0.3s ease-in-out;
+          &::placeholder {
+            color: $color1;
+            font-size: 16px;
+            line-height: 19.2px;
+            padding-left: 8px;
+          }
+        }
+        .header-form__btn {
+          padding: 0;
+          position: absolute;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          height: 32px;
+          top: 14px;
+          right: 32px;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          .header-form__svg {
+            border-radius: 50%;
+            transition: inherit;
+          }
+          @media (hover: hover) {
+            &:hover {
+              .header-form__svg {
+                background-color: $secondaryColor;
+                .header-form__svg-path {
+                  stroke: $color7;
+                }
+              }
+            }
+          }
+          &:focus {
+            .header-form__svg {
+              background-color: $secondaryColorLight;
+              .header-form__svg-path {
+                stroke: $color7;
+              }
+            }
+          }
+          &:active {
+            .header-form__svg {
+              background-color: $secondaryColorDark;
+              .header-form__svg-path {
+                stroke: $color7;
+              }
+              circle {
+                transition: all 0.3s ease-in-out;
+                stroke: $secondaryColorDark;
+              }
+            }
+          }
+        }
+        .header-form__svg-search {
+          fill: $color1;
+          position: absolute;
+          top: 34%;
+          left: 33px;
+        }
+        @media (hover: hover) {
+          &:hover {
+            .header-form__input {
+              background-color: $color3;
+            }
+          }
+        }
+        &:focus {
+          .header-form__input {
+            outline: 2px solid $secondaryColorLight3;
+            background-color: $secondaryColorLight2;
+          }
+        }
+        &:active {
+          .header-form__input {
+            background-color: $color2;
+            outline: none;
+          }
+          .header-form__svg-search {
+            fill: $secondaryColor;
+          }
+        }
+      }
+      .header-btns {
+        grid-column: 12/13;
+        @include flexible();
+        gap: 22px;
+        .header-btns__btn {
+          @include flexible();
+          border: none;
+          outline: none;
+          background-color: transparent;
+          padding: 4px;
+          position: relative;
+          fill: $secondaryColor;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          .header-btns__count {
+            @include flexible();
+            position: absolute;
+            border-radius: 50%;
+            width: 14px;
+            height: 15px;
+            background-color: $primaryColor;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 10px;
+            color: $color7;
+            left: 7px;
+          }
+          .header-btns__btn-svg {
+            transition: inherit;
+          }
+          @media (hover: hover){
+            &:hover {
+              .header-btns__btn-svg {
+                fill: $secondaryColorLight;
+              }
+            }
+          }
+          &:focus {
+            background-color: $secondaryColorLight;
+            .header-btns__btn-svg {
+              fill: $color7;
+            }
+          }
+          &:active {
+            background-color: inherit;
+            .header-btns__btn-svg {
+              fill: $secondaryColorDark;
+            }
+          }
+        }
+        .header-btns__btn:nth-child(2) {
+          justify-content: flex-end;
+          min-width: 49px;
+        }
+      }
+    }
+  }
+  .header__stripe {
+    position: absolute;
+    background-color: $color2;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+.header-catalog {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 1280px) {
+  .header {
+    .container {
+      .header__container {
+        grid-template-columns: repeat(9, 1fr);
+        .header__phone {
+          grid-column: 1/9;
+          order: 1;
+          padding: 20px 0;
+        }
+        .header__nav-secondary {
+          grid-column: 1/8;
+          order: 2;
+          padding: 18px 0;
+          .header__list-secondary {
+            .header__item-secondary {
+              .header__link-secondary {
+                padding: 0;
+              }
+            }
+          }
+        }
+        .header-btns {
+          grid-column: 9/9;
+          order: 3;
+        }
+        .logo {
+          order: 4;
+        }
+        .header__nav-primary {
+          grid-column: 3/10;
+          order: 5;
+          .header__list-primary {
+            .header__item-primary {
+              .header__link-primary {
+                padding: 0;
+              }
+            }
+          }
+        }
+        .header-form {
+          grid-column: 1/8;
+          order: 6;
+        }
+      }
+    }
+    .header__stripe {
+      top: 22%;
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .header {
+    .container {
+      padding: 0 70px;
+      .header__container {
+        grid-template-columns: repeat(6, 1fr);
+        .header__phone {
+          grid-column: 1/7;
+          order: 1;
+        }
+        .header__nav-secondary {
+          grid-column: 1/7;
+          order: 2;
+        }
+        .header-btns {
+          grid-column: 5/7;
+          order: 4;
+          justify-content: flex-end;
+          padding: 29px 0;
+        }
+        .logo {
+          order: 3;
+        }
+        .header__nav-primary {
+          grid-column: 1/7;
+          order: 5;
+          padding: 0 0 32px;
+          .header__list-primary {
+            .header__item-primary {
+              font-size: 14px;
+              line-height: 19.07px;
+            }
+          }
+        }
+        .header-form {
+          grid-column: 1/7;
+          order: 6;
+        }
+      }
+    }
+    .header__stripe {
+      top: 19%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    .container {
+      padding: 0 12px;
+      .header__container {
+        grid-template-columns: repeat(2, 1fr);
+        .header__phone {
+          grid-column: 1/2;
+          order: 2;
+          padding: 31px 0;
+        }
+        .header__nav-secondary {
+          display: none;
+        }
+        .header-btns {
+          grid-column: 2/3;
+          order: 3;
+          padding: 0px 0;
+        }
+        .logo {
+          grid-column: 1/3;
+          order: 1;
+          justify-self: center;
+          margin: 12px 0;
+        }
+        .header__nav-primary {
+          grid-column: 1/3;
+          order: 4;
+          padding: 0 0 19px;
+          .header__list-primary {
+            overflow-x: scroll;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            gap: 30px;
+            scrollbar-width: none;
+            .header__item-primary {
+              .header__link-primary {
+                text-wrap: nowrap;
+              }
+            }
+          }
+        }
+        .header-form {
+          grid-column: 1/3;
+          order: 5;
+        }
+      }
+    }
+    .header__stripe {
+      top: 0;
+    }
+  }
+}

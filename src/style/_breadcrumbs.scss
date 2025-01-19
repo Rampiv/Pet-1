@@ -1,0 +1,33 @@
+@use "./variables" as *;
+.breadcrumbs {
+  margin-bottom: 32px;
+  .breadcrumbs__link,
+  .breadcrumbs__span {
+    font-size: 14px;
+    line-height: 14px;
+    color: $color1;
+  }
+  .breadcrumbs__link:last-child {
+    color: $secondaryColor;
+  }
+  .breadcrumbs__link {
+    outline: none;
+    @media (hover: hover) {
+      &:hover {
+        color: $secondaryColor;
+      }
+    }
+    &:focus {
+      color: $secondaryColorLight;
+    }
+    &:active {
+      color: $secondaryColorDark;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .breadcrumbs {
+    display: none;
+  }
+}

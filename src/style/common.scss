@@ -1,0 +1,423 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+img,
+video,
+canvas {
+  overflow: hidden;
+}
+
+body {
+  font-family: "OpenSans", sans-serif;
+  margin: 0;
+  background-color: $color7;
+}
+
+main {
+  min-height: calc(100vh - 201px - 166px);
+}
+
+.container {
+  max-width: 1353px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src:
+    local("OpenSans--Regular"),
+    url("../resources/fonts/OpenSans-regular.woff2") format("woff2"),
+    url("../resources/fonts/OpenSans-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src:
+    local("OpenSans--Regular"),
+    url("../resources/fonts/OpenSans-Medium.woff2") format("woff2"),
+    url("../resources/fonts/OpenSans-Medium.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src:
+    local("OpenSans--Bold"),
+    url("../resources/fonts/OpenSans-Bold.woff2") format("woff2"),
+    url("../resources/fonts/OpenSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src:
+    local("PlayfairDisplay--Black"),
+    url("../resources/fonts/PlayfairDisplay-Black.woff") format("woff2"),
+    url("../resources/fonts/PlayfairDisplay-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src:
+    local("PlayfairDisplay--Bold"),
+    url("../resources/fonts/PlayfairDisplay-Bold.woff") format("woff2"),
+    url("../resources/fonts/PlayfairDisplay-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+.display-none {
+  display: none;
+}
+
+.input-base {
+  padding: 18px 32px;
+  border-radius: 10px;
+  background-color: $color2;
+  font-size: 16px;
+  line-height: 19.2px;
+  color: $color4;
+}
+.h2-base {
+  @include textReset();
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 32px;
+  color: $color4;
+}
+
+.h3-base {
+  @include textReset();
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31.2px;
+}
+.card-base {
+  background-color: $color2;
+  border-radius: 10px;
+}
+
+.btn-type1 {
+  @include btnReset();
+  padding: 19px 35px;
+  border-radius: 10px;
+  border: 2px solid $secondaryColor;
+  background-color: transparent;
+  color: $secondaryColor;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  @media (hover: hover) {
+    &:hover {
+      background-color: $secondaryColor;
+      color: $color7;
+    }
+  }
+  &:focus {
+    color: $color7;
+    background-color: $secondaryColorLight;
+  }
+  &:active {
+    background-color: $secondaryColorDark;
+    border-color: $secondaryColorDark;
+  }
+}
+
+.btn-type2 {
+  @include btnReset();
+  padding: 22px 52px;
+  color: $color7;
+  border-radius: 10px;
+  background-color: $secondaryColor;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  @media (hover: hover) {
+    &:hover {
+      background-color: $secondaryColorLight;
+    }
+  }
+  &:focus {
+    background-color: $secondaryColorLight;
+    outline: 2px solid $secondaryColorDark;
+  }
+  &:active {
+    background-color: $secondaryColorDark;
+    outline: none;
+  }
+}
+
+/* для элемента input c type="checkbox" */
+.checkbox-base {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+/* для элемента label, связанного с .checkbox-base */
+.checkbox-base + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+/* создание в label псевдоэлемента before со следующими стилями */
+.checkbox-base + label::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid $secondaryColor;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.checkbox-base-filter + label::before {
+  width: 20px;
+  height: 20px;
+}
+
+/* стили при наведении курсора на checkbox */
+@media (hover: hover) {
+  .checkbox-base:not(:disabled):not(:checked) + label:hover::before {
+    border-color: $secondaryColor;
+  }
+}
+
+/* стили для активного чекбокса (при нажатии на него) */
+.checkbox-base:not(:disabled):active + label::before {
+  background-color: $secondaryColor;
+  border-color: $secondaryColor;
+}
+
+/* стили для чекбокса, находящегося в фокусе */
+.checkbox-base:focus + label::before {
+  border-color: $secondaryColor;
+}
+
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.checkbox-base:focus:not(:checked) + label::before {
+  border-color: $secondaryColor;
+}
+
+/* стили для чекбокса, находящегося в состоянии checked */
+.checkbox-base:checked + label::before {
+  border-color: $secondaryColor;
+  background-color: $secondaryColor;
+  background-image: url("../img/svg/check.svg");
+  background-size: 12px 8px;
+}
+
+/* стили для чекбокса, находящегося в состоянии disabled */
+.checkbox-base:disabled + label::before {
+  background-color: $color1;
+}
+
+.catalog-link-base {
+  @include flexible();
+  justify-content: flex-start;
+  width: fit-content;
+  transition: all 0.3s ease-in-out;
+  padding-left: 30px;
+  user-select: auto;
+  .catalog-link-base__link {
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.2px;
+    color: $secondaryColor;
+    transition: inherit;
+    border-bottom: 2px solid transparent;
+    outline: none;
+  }
+  .catalog-link-base__svg {
+    border-radius: 50%;
+    transition: inherit;
+  }
+  @media (hover: hover) {
+    &:hover {
+      .catalog-link-base__link {
+        border-bottom: 2px solid $secondaryColor;
+      }
+      .catalog-link-base__svg {
+        background-color: $secondaryColor;
+        .catalog-link-base__svg-path {
+          stroke: $color7;
+        }
+      }
+    }
+  }
+
+  .catalog-link-base__link:focus {
+    border-bottom: 2px solid $secondaryColor;
+  }
+
+  &:active {
+    .catalog-link-base__link {
+      border-bottom: 2px solid $secondaryColorDark;
+      color: $secondaryColorDark;
+    }
+    .catalog-link-base__svg {
+      background-color: $secondaryColorDark;
+      .catalog-link-base__svg-path {
+        stroke: $color7;
+      }
+      circle {
+        transition: all 0.3s ease-in-out;
+        stroke: $secondaryColorDark;
+      }
+    }
+  }
+}
+
+.catalog-card {
+  @include flexible();
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  min-height: 420px;
+  .catalog-card-img {
+    margin-bottom: 15px;
+    max-width: 266px;
+  }
+  .catalog-card-img_width {
+    max-width: 211px;
+  }
+  .catalog-card-content {
+    padding: 0 30px 30px;
+    @include flexible();
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    .catalog-card-h3 {
+      margin-bottom: 20px;
+    }
+    .catalog-card-price {
+      margin-bottom: 20px;
+    }
+  }
+  .catalog-card-rating {
+    position: absolute;
+    color: $primaryColor;
+    font-size: 16px;
+    line-height: 20.8px;
+    top: 7%;
+    left: 18%;
+    &:before {
+      content: url(../img/svg/star.svg);
+      position: absolute;
+      left: -23px;
+      top: 2px;
+    }
+  }
+}
+
+.page-list {
+  @include listReset();
+  @include flexible();
+  gap: 14px;
+  .page-item {
+    .page-btn {
+      @include btnReset();
+      padding: 8px 11px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 14px;
+      color: $secondaryColor;
+      border: 2px solid $secondaryColor;
+      border-radius: 10px;
+      outline: none;
+      transition: all 0.3s ease-in-out;
+      @media (hover: hover) {
+        &:hover {
+          background-color: $secondaryColor;
+          color: $color7;
+        }
+      }
+      &:focus {
+        background-color: $secondaryColorLight;
+        color: $color7;
+      }
+      &:active {
+        background-color: $secondaryColorDark;
+        color: $color7;
+        border-color: $secondaryColorDark;
+      }
+    }
+    .page-btn_active {
+      background-color: $secondaryColorDark;
+      color: $color7;
+      border-color: $secondaryColorDark;
+    }
+  }
+}
+
+// медиа запроосы
+@media (max-width: 950px) {
+  .container {
+    padding: 0 72px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 12px;
+  }
+  .h2-base {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    min-width: 320px;
+  }
+}

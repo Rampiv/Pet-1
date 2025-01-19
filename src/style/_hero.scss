@@ -1,0 +1,65 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+
+.hero {
+  margin-bottom: 70px;
+  background: url("../img/hero.webp") no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  .hero__container {
+    padding: 80px 0;
+    .hero__h2 {
+      @include textReset();
+      max-width: 500px;
+      margin-bottom: 49px;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 65.37px;
+      color: $color1;
+    }
+    .hero__btn {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 16px;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .hero {
+    background-position: 8% 101%;
+    background-size: 142%;
+  }
+}
+@media (max-width: 950px) {
+  .hero {
+    background-position: 50% 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    background-size: 160%;
+    background-position: 51% -20%;
+    .hero__container {
+      padding: 30px 0 0;
+      .hero__h2 {
+        max-width: 90%;
+        padding: 0 17px;
+        font-size: 20px;
+        line-height: 27.24px;
+        margin-bottom: 53%;
+      }
+      .hero__btn{
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px){
+  .hero {
+    background-size: 191%;
+    background-position: 50% -14%;
+}
+}

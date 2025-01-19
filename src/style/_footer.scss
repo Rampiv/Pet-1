@@ -1,0 +1,193 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+
+.footer__content-up {
+  padding: 24px 0 17px;
+  background-color: $color3;
+  .footer__up-content {
+    @include flexible();
+    justify-content: space-between;
+    .footer__img {
+      @include flexible();
+      flex-direction: column;
+      gap: 31px;
+      .footer__icons {
+        @include listReset();
+        width: 100%;
+        @include flexible();
+        justify-content: flex-start;
+        gap: 20px;
+        .footer__icon {
+          height: 36px;
+          .footer__icon-link {
+            display: inline-block;
+            height: 100%;
+            padding: 3px;
+            fill: $color1;
+            transition: all 0.3s ease-in-out;
+            outline: none;
+            .footer__icon-svg {
+              transition: inherit;
+            }
+            @media (hover: hover){
+              &:hover {
+                .footer__icon-svg {
+                  fill: $secondaryColor;
+                }
+              }
+            }
+            &:focus {
+              background-color: $secondaryColorLight;
+              .footer__icon-svg {
+                fill: $color7;
+              }
+            }
+            &:active {
+              background-color: transparent;
+              .footer__icon-svg {
+                fill: $secondaryColorDark;
+              }
+            }
+          }
+        }
+      }
+    }
+    .footer__lists-common {
+      @include listReset();
+      @include flexible();
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 66%;
+      flex-wrap: wrap;
+      .footer__item-common {
+        @include flexible();
+        flex-direction: column;
+        align-items: flex-start;
+        .footer__h3 {
+          @include textReset();
+          margin-bottom: 10px;
+          padding: 0 8px;
+          font-size: 16px;
+          line-height: 16px;
+          font-weight: 400;
+        }
+        .footer__list-definite {
+          @include listReset();
+          @include flexible();
+          gap: 10px;
+          flex-direction: column;
+          align-items: flex-start;
+          .footer__item-definite {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 14px;
+            color: $color1;
+            .footer__link {
+              outline: none;
+              transition: all 0.3s ease-in-out;
+              padding: 0 8px;
+              @media (hover: hover) {
+                &:hover {
+                  color: $secondaryColor;
+                }
+              }
+              &:focus {
+                color: $secondaryColorDark;
+                background-color: $secondaryColor;
+              }
+              &:active {
+                color: $secondaryColorDark;
+                background-color: inherit;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.footer__bottom-content {
+  background-color: $color2;
+  .footer__bottom-content-text {
+    @include flexible();
+    padding: 5px 0 6px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.07px;
+    color: $color1;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .footer__content-up {
+    padding: 24px 0 20px;
+    .footer__up-content {
+      justify-content: flex-start;
+      gap: 32px;
+      .footer__img {
+        gap: 26px;
+        .footer__icons {
+          gap: 14px;
+        }
+      }
+      .footer__lists-common {
+        width: 77%;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .footer__content-up {
+    padding: 21px 0;
+    .footer__up-content {
+      flex-direction: column;
+      gap: 23px;
+      .footer__img {
+        flex-direction: row;
+        gap: 0;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 47px 0 0;
+        .footer__icons {
+          width: fit-content;
+          gap: 14px;
+        }
+      }
+      .footer__lists-common {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+@media (max-width: 535px) {
+  .footer__content-up {
+    padding: 23px 0;
+    .container {
+      padding: 0 5px;
+      .footer__up-content {
+        .footer__img {
+          flex-direction: column;
+          gap: 22px;
+          justify-content: center;
+          width: 100%;
+          padding: 0;
+          .footer__icons {
+            width: fit-content;
+            gap: 13px;
+          }
+        }
+        .footer__lists-common {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          row-gap: 24px;
+        }
+      }
+    }
+  }
+}
